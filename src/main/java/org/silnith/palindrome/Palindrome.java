@@ -15,7 +15,7 @@ public class Palindrome {
     
     public boolean isPalindrome(final List<CharSequence> characters) {
         final ListIterator<CharSequence> forward = characters.listIterator();
-        final ListIterator<CharSequence> backward = characters.listIterator();
+        final ListIterator<CharSequence> backward = characters.listIterator(characters.size());
         
         while (forward.nextIndex() < backward.previousIndex()) {
             final CharSequence next = forward.next();
@@ -37,7 +37,7 @@ public class Palindrome {
         final BreakIterator characterBreaker = BreakIterator.getCharacterInstance(locale);
         characterBreaker.setText(normalized);
         
-        final List<CharSequence> list = new ArrayList<CharSequence>();
+        final List<CharSequence> list = new ArrayList<>();
         int start = characterBreaker.first();
         int end = characterBreaker.next();
         while (end != BreakIterator.DONE) {
